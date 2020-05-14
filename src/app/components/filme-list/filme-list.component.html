@@ -1,0 +1,28 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h2>Lista de Filmes</h2>
+  </div>
+  <div class="panel-body">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Titulo</th>
+          <th>Ano</th>
+          <th>Diretor</th>
+          <th>Acões</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let filme of filmes">
+          <td>{{filme.titulo}}</td>
+          <td>{{filme.ano}}</td>
+          <td>{{filme.diretor}}</td>
+          <td><button (click)="deleteFilme(filme.id)" class="btn btn-danger">Deletar</button>
+              <button (click)="updateFilme(filme.id)" class="btn btn-info" style="margin-left: 10px">Editar</button>
+              <button (click)="filmeDetalhes(filme.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
