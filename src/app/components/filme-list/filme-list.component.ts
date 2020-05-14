@@ -1,3 +1,4 @@
+import { async } from '@angular/core/testing';
 import { Filme } from './../../models/filme';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,13 +13,17 @@ export class FilmeListComponent implements OnInit {
 
   filmes: Filme[]
 
+  timer: NodeJS.Timeout
+
+  busca = ""
+
   constructor(
     private router: Router,
     private filmesService: FilmesService
   ) { }
 
   ngOnInit(): void {
-    this.reloadData();
+
   }
 
   async reloadData(): Promise<void> {
@@ -41,6 +46,20 @@ export class FilmeListComponent implements OnInit {
 
   updateFilme(id: Number): void {
     this.router.navigate(['update', id]);
+  }
+
+  async buscarFilme(event){
+    if(this.busca.length == 3){
+
+      clearTimeout(this.timer);
+
+      this.timer = setTimeout( async () =>{
+        const result = await this.filmesService.getByTytle(this.busca).toPromise()
+        if(result){
+          this.filmes = Object.values(result);
+        }
+      }, 1000);
+    }
   }
 
 
