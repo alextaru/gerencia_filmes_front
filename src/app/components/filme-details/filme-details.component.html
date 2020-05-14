@@ -9,7 +9,13 @@
     <label><b>Ano: </b></label> {{filme.ano}}
   </div>
   <div>
-    <label><b>Diretor: </b></label> {{filme.diretor}}
+    <label><b>Sinopse: </b></label> {{filme.sinopse}}
+  </div>
+  <div>
+    <label><b>Diretor: </b></label> {{filme.diretores.nome}}
+  </div>
+  <div *ngFor="let ator of filme.atores">
+    <label><b>Ator: </b></label> {{ator.nome}}
   </div>
 </div>
 

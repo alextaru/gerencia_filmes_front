@@ -16,10 +16,10 @@
         <tr *ngFor="let filme of filmes">
           <td>{{filme.titulo}}</td>
           <td>{{filme.ano}}</td>
-          <td>{{filme.diretor}}</td>
-          <td><button (click)="deleteFilme(filme.id)" class="btn btn-danger">Deletar</button>
-              <button (click)="updateFilme(filme.id)" class="btn btn-info" style="margin-left: 10px">Editar</button>
-              <button (click)="filmeDetalhes(filme.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
+          <td>{{filme.diretores.nome}}</td>
+          <td>
+            <button (click)="deleteFilme(filme.id)" class="btn btn-danger">Deletar</button>
+            <button (click)="filmeDetalhes(filme.id)" class="btn btn-info" style="margin-left: 10px">Detalhes</button>
           </td>
         </tr>
       </tbody>

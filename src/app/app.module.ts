@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 import { FilmeListComponent } from './components/filme-list/filme-list.component';
 import { CreateFilmeComponent } from './components/create-filme/create-filme.component';
 import { FilmeDetailsComponent } from './components/filme-details/filme-details.component';
@@ -19,7 +20,8 @@ import { UpdateFilmeComponent } from './components/update-filme/update-filme.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

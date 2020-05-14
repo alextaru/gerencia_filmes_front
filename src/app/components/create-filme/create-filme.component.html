@@ -12,8 +12,18 @@
     </div>
 
     <div class="form-group">
+      <label for="name">Sinopse</label>
+      <input type="text" class="form-control" id="sinopse" required [(ngModel)]="filme.sinopse" name="sinopse">
+    </div>
+
+    <div class="form-group">
       <label for="name">Diretor</label>
       <input type="text" class="form-control" id="diretor" required [(ngModel)]="filme.diretor" name="diretor">
+    </div>
+
+    <div class="form-group">
+      <label for="name">Atores</label>
+      <input type="text" placeholder="separa os atores por virgula. ex:alexandre, adriana" class="form-control" id="atoresList" required [(ngModel)]="filme.atoresList" name="atoresList">
     </div>
 
     <button type="submit" class="btn btn-success">Adicionar</button>

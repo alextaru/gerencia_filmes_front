@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FilmesService } from "../../services/filmes.service";
 
 @Component({
   selector: 'app-create-filme',
@@ -11,11 +12,14 @@ export class CreateFilmeComponent implements OnInit {
   submitted = false;
   filme = {
     titulo: "",
+    sinopse: "",
     ano: "",
-    diretor: ""
+    diretor: "",
+    atoresList: ""
   }
 
   constructor(
+    private filmesService: FilmesService,
     private router: Router
   ) { }
 
@@ -23,7 +27,11 @@ export class CreateFilmeComponent implements OnInit {
   }
 
   save() {
-    this.gotoList();
+    this.filmesService.createFilme(this.filme)
+      .subscribe(data =>{
+        this.gotoList();
+      },
+      error => console.log(error))
   }
 
   onSubmit() {

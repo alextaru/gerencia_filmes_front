@@ -1,5 +1,7 @@
+import { Filme } from './../../models/filme';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { FilmesService } from "../../services/filmes.service";
 
 @Component({
   selector: 'app-filme-list',
@@ -8,27 +10,29 @@ import { Router } from '@angular/router';
 })
 export class FilmeListComponent implements OnInit {
 
-  filmes = [];
+  filmes: Filme[]
 
   constructor(
-    private router: Router
+    private router: Router,
+    private filmesService: FilmesService
   ) { }
 
   ngOnInit(): void {
     this.reloadData();
   }
 
-  reloadData(): void {
-    this.filmes.push({
-      id: 1,
-      titulo: "Matrix",
-      ano: "2016",
-      diretor: "antonio bandeiras"
-    })
+  async reloadData(): Promise<void> {
+    const result = await this.filmesService.getAllFilme().toPromise()
+    this.filmes = Object.values(result);
   }
 
-  deleteFilme(id: Number): void {
-
+  deleteFilme(id: number): void {
+    this.filmesService.remove(id)
+      .subscribe(
+        data => {
+          this.reloadData();
+        },
+        error => console.log(error));
   }
 
   filmeDetalhes(id: Number): void {
