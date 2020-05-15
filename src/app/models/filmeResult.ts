@@ -1,7 +1,8 @@
-export class Filme {
+import { Diretor } from "./diretor";
+
+export class FilmeResult {
   titulo: string;
   ano: number;
   sinopse: string;
-  diretor: string;
-  atoresList: string;
+  diretor: Diretor;
 }

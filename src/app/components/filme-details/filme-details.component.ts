@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FilmesService } from "../../services/filmes.service";
+import { FilmeDetalhes } from "../../models/filmeDetalhes";
 
 @Component({
   selector: 'app-filme-details',
@@ -10,13 +11,7 @@ import { FilmesService } from "../../services/filmes.service";
 export class FilmeDetailsComponent implements OnInit {
 
   id: number;
-  filme = {
-    titulo: "",
-    ano: "",
-    sinopse: "",
-    diretor: "",
-    atores: []
-  };
+  filme: FilmeDetalhes;
 
   constructor(
     private router: Router,
@@ -29,7 +24,6 @@ export class FilmeDetailsComponent implements OnInit {
     this.filmesService.getFilme(this.id)
       .subscribe(data =>{
         this.filme = data
-        this.filme.atores =  Object.values(this.filme.atores)
     },error => console.log(error))
   }
 

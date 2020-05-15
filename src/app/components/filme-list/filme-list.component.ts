@@ -1,5 +1,4 @@
-import { async } from '@angular/core/testing';
-import { Filme } from './../../models/filme';
+import { FilmeResult } from './../../models/filmeResult'
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FilmesService } from "../../services/filmes.service";
@@ -11,9 +10,9 @@ import { FilmesService } from "../../services/filmes.service";
 })
 export class FilmeListComponent implements OnInit {
 
-  filmes: Filme[]
+  filmes: FilmeResult[]
 
-  timer: NodeJS.Timeout
+  timer: any
 
   busca = ""
 
